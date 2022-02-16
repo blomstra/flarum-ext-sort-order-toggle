@@ -4,7 +4,7 @@ import app from 'flarum/forum/app';
 
 export class SortDirectionToggler extends Component {
   view() {
-    let sortDirection = app.__sortDirection;
+    let sortDirection = (app as any).__sortDirection;
 
     if (!['asc', 'desc'].includes(sortDirection)) sortDirection = 'desc';
 
@@ -18,7 +18,7 @@ export class SortDirectionToggler extends Component {
   }
 
   toggleSortDirection() {
-    app.__sortDirection = app.__sortDirection === 'asc' ? 'desc' : 'asc';
+    (app as any).__sortDirection = (app as any).__sortDirection === 'asc' ? 'desc' : 'asc';
     app.discussions.refresh();
   }
 }
