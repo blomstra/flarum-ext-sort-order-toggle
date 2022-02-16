@@ -1,0 +1,49 @@
+{
+  "name": "blomstra/sort-order-toggle",
+  "description": "Add a button next to Flarum's sort dropdown for you to toggle between ascending and descending.",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "flarum/core": "^1.2.0"
+  },
+  "authors": [
+    {
+      "name": "David Wheatley",
+      "email": "hi@davwheat.dev",
+      "role": "Developer"
+    }
+  ],
+  "extra": {
+    "flarum-extension": {
+      "title": "Sort Order Toggle",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-sort-amount-down",
+        "backgroundColor": "#EBF1FD",
+        "color": "#3a98d0"
+      }
+    },
+    "flarum-cli": {
+      "modules": {
+        "admin": false,
+        "forum": true,
+        "js": true,
+        "jsCommon": false,
+        "css": true,
+        "locale": true,
+        "gitConf": true,
+        "githubActions": true,
+        "prettier": true,
+        "typescript": true,
+        "bundlewatch": false,
+        "backendTesting": false,
+        "editorConfig": false,
+        "styleci": true
+      }
+    }
+  }
+}
