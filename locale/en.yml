@@ -1,7 +1,5 @@
 blomstra-sort-order-toggle:
-  # For more details on the format
-  # Checkout https://docs.flarum.org/extend/i18n.html#appendix-a-standard-key-format
-  admin:
-    my_cool_key: My Cool Key
-
   forum:
+    sort-toggle:
+      desc-label: Sort descending (press to toggle)
+      asc-label: Sort ascending (press to toggle)

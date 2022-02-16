@@ -1111,7 +1111,7 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
-"@types/mithril@^2.0.7":
+"@types/mithril@^2.0.7", "@types/mithril@^2.0.8":
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/@types/mithril/-/mithril-2.0.8.tgz#b7b6f58bdc7b244802f5ff919805e947d8e45b4e"
   integrity sha512-QzVV70DqUhWfLFpMFDBI9rRxtzeUUpbhiFDpUJYSV92AePgl+Qfficgv2MOb1Ceb+lBOQU8+L+Hjf2UielQjEw==
@@ -2699,7 +2699,7 @@ typed-styles@^0.0.7:
   resolved "https://registry.yarnpkg.com/typed-styles/-/typed-styles-0.0.7.tgz#93392a008794c4595119ff62dde6809dbc40a3d9"
   integrity sha512-pzP0PWoZUhsECYjABgCGQlRGL1n7tOHsgwYv3oIiEpJwGhFTuty/YNeduxQYzXXa3Ge5BdT6sHYIQYpl4uJ+5Q==
 
-typescript-coverage-report@^0.6.1:
+typescript-coverage-report@^0.6.4:
   version "0.6.4"
   resolved "https://registry.yarnpkg.com/typescript-coverage-report/-/typescript-coverage-report-0.6.4.tgz#3a7a7724c0f27de50d2a0708c7b7b7088bed2055"
   integrity sha512-G+0OFYxwN5oRbORlU1nKYtO00G567lcl4+nbg3MU3Y9ayFnh677dMHmAL4JGP/4Cb1IBN5h/DUQDr/z9X+9lag==
@@ -2714,7 +2714,7 @@ typescript-coverage-report@^0.6.1:
     semantic-ui-react "^0.88.2"
     type-coverage-core "^2.17.2"
 
-typescript@^4.3.2, typescript@^4.5.4:
+typescript@^4.3.2, typescript@^4.5.5:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
@@ -2779,7 +2779,7 @@ webpack-bundle-analyzer@^4.4.2:
     sirv "^1.0.7"
     ws "^7.3.1"
 
-webpack-cli@^4.9.1:
+webpack-cli@^4.9.2:
   version "4.9.2"
   resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-4.9.2.tgz#77c1adaea020c3f9e2db8aad8ea78d235c83659d"
   integrity sha512-m3/AACnBBzK/kMTcxWHcZFPrw/eQuY4Df1TxvIWfWM2x7mRqBQCqKEd96oCUa9jkapLBaFfRce33eGDb4Pr7YQ==
@@ -2810,7 +2810,7 @@ webpack-sources@^3.2.3:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack@^5.65.0:
+webpack@^5.69.0:
   version "5.69.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.69.0.tgz#c9eb607d4f6c49f1e5755492323a7b055c3450e3"
   integrity sha512-E5Fqu89Gu8fR6vejRqu26h8ld/k6/dCVbeGUcuZjc+goQHDfCPU9rER71JmdtBYGmci7Ec2aFEATQ2IVXKy2wg==

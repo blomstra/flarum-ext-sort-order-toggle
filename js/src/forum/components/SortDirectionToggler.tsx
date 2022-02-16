@@ -12,7 +12,8 @@ export class SortDirectionToggler extends Component {
       <Button
         class="Button Button--icon Blomstra-SortDirectionToggle"
         onclick={this.toggleSortDirection}
-        icon={sortDirection === 'desc' ? 'fas fa-sort-alpha-down' : 'fas fa-sort-alpha-up'}
+        aria-label={app.translator.trans(`blomstra-sort-order-toggle.forum.sort-toggle.${sortDirection}-label`)}
+        icon={sortDirection === 'desc' ? 'fas fa-sort-amount-down' : 'fas fa-sort-amount-up'}
       />
     );
   }
