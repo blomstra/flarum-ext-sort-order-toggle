@@ -23,5 +23,5 @@ php flarum cache:clear
 ## Links
 
 - [Packagist](https://packagist.org/packages/blomstra/sort-order-toggle)
-- [GitHub](https://github.com/blomstra/sort-order-toggle)
+- [GitHub](https://github.com/blomstra/flarum-ext-sort-order-toggle)
 - [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
