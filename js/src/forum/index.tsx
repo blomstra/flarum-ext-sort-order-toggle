@@ -16,6 +16,11 @@ app.initializers.add('blomstra/sort-order-toggle', () => {
   });
 
   extend(DiscussionListState.prototype, 'requestParams', function (this: DiscussionListState, params: Record<string, any>) {
+    if (!params) return;
+
+    // Enforce default
+    params.sort ||= Object.values(this.sortMap())[0];
+
     if (params.sort) {
       if (params.sort.startsWith('-') && (app as any).__sortDirection === 'asc') {
         params.sort = params.sort.substr(1);
