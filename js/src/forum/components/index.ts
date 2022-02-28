@@ -1,5 +1,5 @@
-import { SortDirectionToggler } from "./SortDirectionToggler";
+import { SortDirectionToggler } from './SortDirectionToggler';
 
 export const components = {
-    SortDirectionToggler,
+  SortDirectionToggler,
 };
