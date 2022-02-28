@@ -8,6 +8,8 @@ import DiscussionListState from 'flarum/forum/states/DiscussionListState';
 import type Mithril from 'mithril';
 import { SortDirectionToggler } from './components/SortDirectionToggler';
 
+export * from './components';
+
 app.initializers.add('blomstra/sort-order-toggle', () => {
   extend(IndexPage.prototype, 'viewItems', function (items: ItemList<Mithril.Children>) {
     if ((app.current.data as any).routeName === 'byobuPrivate' || !items.has('sort')) return;
