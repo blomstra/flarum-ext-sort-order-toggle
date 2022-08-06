@@ -1,6 +1,7 @@
 import Component from 'flarum/common/Component';
 import Button from 'flarum/common/components/Button';
 import app from 'flarum/forum/app';
+import apiSortReverse from '../utils/apiSortReverse';
 
 export class SortDirectionToggler extends Component {
   view() {
@@ -19,7 +20,7 @@ export class SortDirectionToggler extends Component {
   protected getApiSort(): string {
     const { sort } = app.search.params();
 
-    const sortMap = app.discussions.sortMap();
+    const sortMap = app.discussions.extendedSortMap();
 
     let apiSort = sortMap[sort || ''];
 
@@ -35,17 +36,26 @@ export class SortDirectionToggler extends Component {
   }
 
   toggleSortDirection() {
-    const currentSort = this.getApiSort();
+    const currentApiSort = this.getApiSort();
 
-    const newSort = currentSort.startsWith('-') ? currentSort.substring(1) : '-' + currentSort;
+    const newApiSort = apiSortReverse(currentApiSort);
 
-    const sortMap = app.discussions.sortMap();
+    const sortMap = app.discussions.extendedSortMap();
+
+    let newFrontendSort;
 
     for (let sortParam in sortMap) {
-      if (sortMap[sortParam] === newSort) {
-        app.search.changeSort(sortParam);
+      if (sortMap[sortParam] === newApiSort) {
+        newFrontendSort = sortParam;
         break;
       }
     }
+
+    if (!newFrontendSort) {
+      console.warn('Could not find a frontend sort key for REST sort ' + newApiSort);
+      return;
+    }
+
+    app.search.changeSort(newFrontendSort);
   }
 }
