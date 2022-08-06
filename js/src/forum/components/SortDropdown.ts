@@ -43,24 +43,24 @@ export default class SortDropdown extends Component {
     }
 
     return Dropdown.component(
-        {
-          buttonClassName: 'Button',
-          label,
-          accessibleToggleLabel: app.translator.trans('core.forum.index_sort.toggle_dropdown_accessible_label'),
-        },
-        Object.keys(sortOptions).map((value) => {
-          const label = sortOptions[value];
-          const active = (activeSortFrontendKey || Object.keys(sortMap)[0]) === value;
+      {
+        buttonClassName: 'Button',
+        label,
+        accessibleToggleLabel: app.translator.trans('core.forum.index_sort.toggle_dropdown_accessible_label'),
+      },
+      Object.keys(sortOptions).map((value) => {
+        const label = sortOptions[value];
+        const active = (activeSortFrontendKey || Object.keys(sortMap)[0]) === value;
 
-          return Button.component(
-            {
-              icon: active ? 'fas fa-check' : true,
-              onclick: app.search.changeSort.bind(app.search, value),
-              active: active,
-            },
-            label
-          );
-        })
-      );
+        return Button.component(
+          {
+            icon: active ? 'fas fa-check' : true,
+            onclick: app.search.changeSort.bind(app.search, value),
+            active: active,
+          },
+          label
+        );
+      })
+    );
   }
 }

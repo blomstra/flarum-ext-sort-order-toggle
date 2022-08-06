@@ -29,7 +29,7 @@ app.initializers.add('blomstra/sort-order-toggle', () => {
       map.relevance = '';
     }
 
-    const extendedMap =app.forum.attribute<any>('sortOrderToggleExtendedMap') || {};
+    const extendedMap = app.forum.attribute<any>('sortOrderToggleExtendedMap') || {};
 
     for (let sortParam in extendedMap) {
       map[sortParam] = extendedMap[sortParam];
@@ -39,7 +39,7 @@ app.initializers.add('blomstra/sort-order-toggle', () => {
   };
 
   // Use our new extended map for the frontend-to-REST map
-  extend(DiscussionListState.prototype, 'requestParams', function(params) {
+  extend(DiscussionListState.prototype, 'requestParams', function (params) {
     params.sort = this.extendedSortMap()[this.params.sort ?? ''];
   });
 });
