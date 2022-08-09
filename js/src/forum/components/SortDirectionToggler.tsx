@@ -1,5 +1,6 @@
 import Component from 'flarum/common/Component';
 import Button from 'flarum/common/components/Button';
+import classList from 'flarum/common/utils/classList';
 import app from 'flarum/forum/app';
 import apiSortReverse from '../utils/apiSortReverse';
 
@@ -9,7 +10,7 @@ export class SortDirectionToggler extends Component {
 
     return (
       <Button
-        class="Button Button--icon Blomstra-SortDirectionToggle"
+        class={classList(['Button', 'Button--icon', 'Blomstra-SortDirectionToggle', this.isExtendedSortField() && 'active'])}
         onclick={this.toggleSortDirection.bind(this)}
         aria-label={app.translator.trans(`blomstra-sort-order-toggle.forum.sort-toggle.${sortDirection}-label`)}
         icon={sortDirection === 'desc' ? 'fas fa-sort-amount-down' : 'fas fa-sort-amount-up'}
@@ -33,6 +34,12 @@ export class SortDirectionToggler extends Component {
 
   getSortDirection(): 'asc' | 'desc' {
     return this.getApiSort().startsWith('-') ? 'desc' : 'asc';
+  }
+
+  isExtendedSortField(): boolean {
+    const { sort } = app.search.params();
+
+    return sort && !app.discussions.sortMap()[sort] && app.discussions.extendedSortMap()[sort];
   }
 
   toggleSortDirection() {

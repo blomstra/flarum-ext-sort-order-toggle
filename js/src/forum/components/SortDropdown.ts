@@ -32,7 +32,7 @@ export default class SortDropdown extends Component {
 
       for (let sortParam in sortMap) {
         if (sortMap[sortParam] === reverse) {
-          label = '- ' + sortOptions[sortParam];
+          label = sortOptions[sortParam];
           break;
         }
       }
