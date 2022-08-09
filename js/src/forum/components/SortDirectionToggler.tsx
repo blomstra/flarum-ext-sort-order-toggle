@@ -10,7 +10,15 @@ export class SortDirectionToggler extends Component {
 
     return (
       <Button
-        class={classList(['Button', 'Button--icon', 'Blomstra-SortDirectionToggle', this.isExtendedSortField() && 'active'])}
+        class={classList([
+          'Button',
+          'Button--icon',
+          'Blomstra-SortDirectionToggle',
+          {
+            active: this.isExtendedSortField(),
+            disabled: !this.oppositeFrontendSort(),
+          },
+        ])}
         onclick={this.toggleSortDirection.bind(this)}
         aria-label={app.translator.trans(`blomstra-sort-order-toggle.forum.sort-toggle.${sortDirection}-label`)}
         icon={sortDirection === 'desc' ? 'fas fa-sort-amount-down' : 'fas fa-sort-amount-up'}
@@ -42,14 +50,14 @@ export class SortDirectionToggler extends Component {
     return sort && !app.discussions.sortMap()[sort] && app.discussions.extendedSortMap()[sort];
   }
 
-  toggleSortDirection() {
+  oppositeFrontendSort(): string | null {
     const currentApiSort = this.getApiSort();
 
     const newApiSort = apiSortReverse(currentApiSort);
 
     const sortMap = app.discussions.extendedSortMap();
 
-    let newFrontendSort;
+    let newFrontendSort: string | null = null;
 
     for (let sortParam in sortMap) {
       if (sortMap[sortParam] === newApiSort) {
@@ -58,8 +66,14 @@ export class SortDirectionToggler extends Component {
       }
     }
 
+    return newFrontendSort;
+  }
+
+  toggleSortDirection() {
+    const newFrontendSort = this.oppositeFrontendSort();
+
+    // Shouldn't happen because the button will be disabled
     if (!newFrontendSort) {
-      console.warn('Could not find a frontend sort key for REST sort ' + newApiSort);
       return;
     }
 
