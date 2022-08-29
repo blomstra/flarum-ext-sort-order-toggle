@@ -29,12 +29,12 @@ export class SortDirectionToggler extends Component {
   protected getApiSort(): string {
     const { sort } = app.search.params();
 
-    const sortMap = app.discussions.extendedSortMap();
-
-    let apiSort = sortMap[sort || ''];
+    let apiSort = sort && app.discussions.extendedSortMap()[sort];
 
     if (!apiSort) {
-      apiSort = Object.values(sortMap)[0];
+      // If no explicit sort option was provided, we will take the first one in the original sortMap
+      // it's important to use sortMap and not extendedSortMap because extensions might customize the order in sortMap to indicate a new default
+      apiSort = Object.values(app.discussions.sortMap())[0];
     }
 
     return apiSort;
