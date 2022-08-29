@@ -7,6 +7,7 @@ import DiscussionListState from 'flarum/forum/states/DiscussionListState';
 
 import type Mithril from 'mithril';
 import { SortDirectionToggler } from './components/SortDirectionToggler';
+import SortDropdown from './components/SortDropdown';
 
 export * from './components';
 
@@ -15,20 +16,38 @@ app.initializers.add('blomstra/sort-order-toggle', () => {
     if ((app.current.data as any).routeName === 'byobuPrivate' || !items.has('sort')) return;
 
     items.add('sortDirectionToggle', <SortDirectionToggler />, 100);
+
+    items.setContent('sort', <SortDropdown />);
   });
 
-  extend(DiscussionListState.prototype, 'requestParams', function (this: DiscussionListState, params: Record<string, any>) {
-    if (!params) return;
+  // We can't just extend the original sortMap because some parts of the UI including the sort dropdown use it to build their options
+  // We'll create a separate method than can be used only internally for the URL to REST mapping
+  DiscussionListState.prototype.extendedSortMap = function () {
+    const map: any = {};
 
-    // Enforce default
-    params.sort ||= Object.values(this.sortMap())[0];
+    // The relevance sort probably won't be needed since we always fallback to sortMap which will contain it
+    // But we keep it here for consistency in case other extensions call extendedSortMap without falling back to sortMap
+    if (this.params.q) {
+      map.relevance = '';
+    }
 
-    if (params.sort) {
-      if (params.sort.startsWith('-') && (app as any).__sortDirection === 'asc') {
-        params.sort = params.sort.substr(1);
-      } else if (!params.sort.startsWith('-')) {
-        params.sort = '-' + params.sort;
-      }
+    const extendedMap = app.forum.attribute<any>('sortOrderToggleExtendedMap') || {};
+
+    for (let sortParam in extendedMap) {
+      map[sortParam] = extendedMap[sortParam];
+    }
+
+    return map;
+  };
+
+  // Use our new extended map for the frontend-to-REST map
+  // If the sort cannot be explicitly found (when no sort parameter is provided) we will keep the default behaviour
+  // We shouldn't re-implement the default here because our extendedSortMap is not sorted and the first option in our list might not be the same as in sortMap
+  extend(DiscussionListState.prototype, 'requestParams', function (this: DiscussionListState, params: any) {
+    const extendedApiSort = this.params.sort && this.extendedSortMap()[this.params.sort];
+
+    if (extendedApiSort) {
+      params.sort = extendedApiSort;
     }
   });
 });
